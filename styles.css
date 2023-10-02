@@ -245,25 +245,25 @@ button {
     background-color: #D6E9D1;
     color: black;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     cursor: pointer;
     text-align: center;
     margin: 0 auto; /* Centrar el botón */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: block; /* Hacer que el botón sea un bloque */
 }
 
 button:hover {
-    background-color: olive;
-    color: black;
+    background-color: green !important;
+    color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     cursor: pointer;
     text-align: center;
     margin: 0 auto; /* Centrar el botón */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: block; /* Hacer que el botón sea un bloque */
 }
 

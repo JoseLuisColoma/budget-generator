@@ -10,20 +10,22 @@ function agregarFila() {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td style="text-align: left;" class="tabla-principal-descripcion" contenteditable="true">Nuevo elemento</td>
-        <td class="tabla-principal-uds" contenteditable="true">0</td>
-        <td class="tabla-principal-precioUd" contenteditable="true">0.00</td>
+        <td class="tabla-principal-uds" contenteditable="true">1</td>
+        <td class="tabla-principal-precioUd" contenteditable="true">0.00 €</td>
         <td class="tabla-principal-precioTotal" contenteditable="true">0.00 €</td>
     `;
     tbody.appendChild(newRow);
-
-    // Recalcular los totales cuando se agrega una fila
-    calcularTotales();
 }
 
 // Event listener para calcular precios totales al editar
 document.addEventListener('input', function (e) {
     if (e.target.classList.contains('tabla-principal-uds') || e.target.classList.contains('tabla-principal-precioUd')) {
         calcularPrecioTotal(e.target.parentElement);
+    }
+
+    // Agregar un event listener para los cambios en el precio de gastos de envío
+    if (e.target.classList.contains('tabla-principal-precioTotal')) {
+        calcularTotales();
     }
 });
 
@@ -38,7 +40,7 @@ function calcularPrecioTotal(row) {
 }
 
 function calcularTotales() {
-    const filas = document.querySelectorAll('tbody tr');
+    const filas = document.querySelectorAll('.tabla-principal');
     let subtotal = 0;
 
     filas.forEach((fila) => {
@@ -46,14 +48,18 @@ function calcularTotales() {
         subtotal += precioTotal;
     });
 
+    // Calcular los gastos de envío
+    const gastosEnvioRow = document.querySelector('.tabla-principal-gastos-de-envio');
+    const gastosEnvio = parseFloat(gastosEnvioRow.querySelector('.tabla-principal-precioTotal').textContent.replace(' €', '')) || 0;
+
+    // Sumar los gastos de envío al subtotal
+    subtotal += gastosEnvio;
+
     const iva = subtotal * 0.21;
-
-    // Actualizar el valor del subtotal en el HTML
-    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} €`;
-
-    // Actualizar los valores de IVA y total
-    document.getElementById('iva').textContent = `${iva.toFixed(2)} €`;
     const total = subtotal + iva;
+
+    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} €`;
+    document.getElementById('iva').textContent = `${iva.toFixed(2)} €`;
     document.getElementById('total').textContent = `${total.toFixed(2)} €`;
 
     // Actualizar el valor del 50% del total en tiempo real
@@ -67,25 +73,27 @@ function calcularTotales() {
     }
 }
 
-// Llamar a calcularTotales al cargar la página
-window.addEventListener('load', () => {
-    calcularTotales();
-});
-
-
-// Llamar a calcularTotales al cargar la página
-window.addEventListener('load', () => {
-    calcularTotales();
-});
-
-
-
 function actualizarGastosDeEnvio(subtotal) {
     const gastosDeEnvioRow = document.querySelector('.tabla-principal-gastos-de-envio');
     if (gastosDeEnvioRow) {
         const gastosDeEnvio = parseFloat(gastosDeEnvioRow.querySelector('.tabla-principal-precioTotal').textContent.replace(' €', '')) || 0;
-        const nuevoPrecioTotal = gastosDeEnvio + subtotal;
+        
         gastosDeEnvioRow.querySelector('.tabla-principal-precioTotal').textContent = `${nuevoPrecioTotal.toFixed(2)} €`;
+    }
+}
+
+function activarDatosPagoCliente() {
+    const datosPagoCliente = document.querySelector('.datos-pago-cliente');
+    const activarButton = document.querySelector('.activar-datos-pago-cliente');
+
+    if (datosPagoCliente.style.display === 'none' || datosPagoCliente.style.display === '') {
+        datosPagoCliente.style.display = 'flex';
+        activarButton.style.display = 'none'; // Ocultar el botón al activar
+
+        // Mostrar "PAGO 1" y "PAGO 2"
+        document.querySelectorAll('.dato-pago-cliente-derecha-50 p').forEach((p) => {
+            p.style.display = 'block';
+        });
     }
 }
 
@@ -105,18 +113,7 @@ function obtener50PorCientoPrecioTotal() {
     return resultado;
 }
 
-function activarDatosPagoCliente() {
-    const datosPagoCliente = document.querySelector('.datos-pago-cliente');
-    const activarButton = document.querySelector('.activar-datos-pago-cliente');
-
-    if (datosPagoCliente.style.display === 'none' || datosPagoCliente.style.display === '') {
-        datosPagoCliente.style.display = 'flex';
-        activarButton.style.display = 'none'; // Ocultar el botón al activar
-
-        // Mostrar "PAGO 1" y "PAGO 2"
-        document.querySelectorAll('.dato-pago-cliente-derecha-50 p').forEach((p) => {
-            p.style.display = 'block';
-        });
-    }
-}
-
+// Llamar a calcularTotales al cargar la página
+window.addEventListener('load', () => {
+    calcularTotales();
+});
