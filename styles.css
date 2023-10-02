@@ -1,0 +1,276 @@
+/* Estilos generales */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: lightslategray;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 0;
+    background-image: url(./assets/img/VM5.jpg); /* Fondo con imagen personalizada */
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Estilos para el fondo de marca de agua */
+.watermark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    background-image: url(./assets/img/VM5.png); /* Imagen de marca de agua personalizada */
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Estilos para la cabecera */
+header {
+    background-color: white; /* Gris claro personalizado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+}
+
+.logo-container {
+    position: relative;
+    top: 30px;
+    margin-bottom: 20px;
+}
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.linea_delimitadora{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el rectángulo de presupuesto y fecha */
+.cabecera {
+    background-color: #b1b1b1;
+    padding: 15px;
+    border: 1px solid white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    display: flex; /* Utilizar flexbox */
+    justify-content: space-between; /* Coloca los elementos en ambos extremos */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.presupuesto {
+    font-weight: normal;
+    margin-left: 10px;
+
+    /* Elimina text-align: center; */
+}
+
+.cabeceras-texto {
+    font-weight: bold;
+}
+
+/* Estilo para el contenedor de datos del cliente */
+.datos-personales {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo para el bloque de VENAYA MOMENTS y Anna Jadwiga Przybylak */
+.datos-venaya {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Estilo para las columnas izquierda y derecha */
+.columna-izquierda-venaya,
+.columna-derecha-venaya {
+    flex: 1;
+}
+
+/* Estilo para el espacio entre las columnas */
+.columna-izquierda-venaya {
+    margin-right: -400px;
+    font-weight: 600;
+}
+
+/* Estilo para el contenedor de datos del cliente */
+.datos-cliente {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo para las columnas izquierda y derecha */
+.columna-izquierda-cliente,
+.columna-derecha-cliente {
+    flex: 1;
+}
+
+/* Estilo para el espacio entre las columnas */
+.columna-izquierda-cliente {
+    margin-right: -400px;
+    font-weight: 600;
+}
+
+/* Estilo para el contenido editable en la columna derecha */
+.columna-derecha p[contenteditable="true"] {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-size: 10px;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: transparent;
+}
+
+.fecha-actual{
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+/* Estilo para el contenedor de datos de pago del cliente */
+.datos-pago-cliente {
+    display: none; /* Ocultar el div inicialmente */
+    justify-content: space-between;
+}
+
+/* Estilo para las columnas izquierda y derecha */
+.dato-pago-cliente-izq,
+.dato-pago-cliente-derecha {
+    flex: 1;
+}
+
+.dato-pago-cliente-izq {
+    margin-right: -300px;
+    font-weight: 600;
+}
+
+/* Estilo para el botón de activar */
+.activar-datos-pago-cliente {
+    background-color: #D6E9D1;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto; /* Centrar el botón */
+    display: block; /* Hacer que el botón sea un bloque */
+}
+
+/* Estilos para el rectángulo de condiciones generales */
+.condiciones {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+/* Estilos para el contenedor principal */
+.cabecera-condiciones {
+    background-color: #b1b1b1;
+    padding: 0px;
+    border: 1px solid white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    display: flex; /* Utilizar flexbox */
+    justify-content: space-between; /* Coloca los elementos en ambos extremos */
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+/* Estilos para la columna izquierda */
+.columna-izquierda-condiciones {
+    flex: 1; /* Toma todo el espacio disponible */
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Estilos para la columna derecha */
+.columna-derecha-condiciones {
+    flex: 1; /* Toma todo el espacio disponible */
+    text-align: right; /* Alineación de texto a la derecha */
+    font-size: 10px; /* Tamaño de letra de 10px */
+    margin-right: 20px;
+}
+
+/* Estilos para el contenido principal */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.tabla-principal{
+    font-size: 12px;
+    text-align: left;
+}
+
+.tabla-principal-descripcion{
+    font-size: 12px;
+}
+
+.tabla-texto-descripcion{
+    font-size: 12px;
+}
+
+button {
+    background-color: #D6E9D1;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto; /* Centrar el botón */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block; /* Hacer que el botón sea un bloque */
+}
+
+button:hover {
+    background-color: olive;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto; /* Centrar el botón */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block; /* Hacer que el botón sea un bloque */
+}
+
+.totals {
+    float: right;
+    margin-top: 20px;
+    text-align: right;
+}
+
+

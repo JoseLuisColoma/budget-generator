@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto Venaya</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="/assets/img/VM2.png" alt="Logo Venaya" width="350">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="cabecera">
+            <div class="cabeceras-texto">PRESUPUESTO:<span class="presupuesto" contenteditable="true">00101012023-1</span></div>
+            <div class="cabeceras-texto">FECHA: <span contenteditable="true" class="fecha-actual" id="fecha-actual"></span></div>
+        </div>
+        <div class="datos-cliente">
+            <div class="datos-venaya">
+                <p>VENAYA MOMENTS</p>
+                <p>Anna Jadwiga Przybylak</p>
+            </div>
+        </div>
+        <div class="datos-personales">
+            <div class="columna-izquierda-venaya">
+                <p>NIF:</p>
+                <p>Dirección:</p>
+                <p>E-mail:</p>
+                <p>Web:</p>
+            </div>
+            <div class="columna-derecha-venaya">
+                <p>X8922165M</p>
+                <p>Antonio Molle 13. 46920 Mislata</p>
+                <p>info@venayamoments.com</p>
+                <p>venayamoments.com</p>
+            </div>
+        </div>
+        <hr class="linea_delimitadora">
+        <div class="datos-cliente">
+            <div class="columna-izquierda-cliente">
+                <p>CLIENTE:</p>
+                <p>NIF:</p>
+                <p>Dirección:</p>
+                <p>Contacto:</p>
+            </div>
+            <div class="columna-derecha-cliente">
+                <p contenteditable="true">-</p>
+                <p contenteditable="true">-</p>
+                <p contenteditable="true">-</p>
+                <p contenteditable="true">-</p>
+            </div>
+        </div>
+        <hr class="linea_delimitadora">
+        <div class="fecha_entrega">
+            <p class="cabeceras-texto">FECHA DE ENTREGA PREVISTA:<span style="margin-left: 10px; font-weight: 100;" contenteditable="true">Por determinar</span></p>
+            <p>La fecha de entrega prevista acordada solo se garantizará realizando la reserva del pedido (efectuando el primer
+                pago - 50% del total del presupuesto) durante los 5 días naturales posteriores a la fecha del presupuesto.</p>
+        </div>
+        <hr class="linea_delimitadora">
+        <div class="forma_pago">
+            <p class="cabeceras-texto">FORMA DE PAGO:<span style="margin-left: 10px; font-weight: 100;" contenteditable="true">(2 PAGOS)
+            <p>50% del importe total al aceptar el presupuesto y reservar el plazo de realización o su puesta en marcha,
+                según disponibilidad (PAGO 1)</p>
+            <p>50% restante al terminar el montaje y antes del envío del paquete del pedido o su recogida en el estudio
+                (PAGO 2)</p>
+        </div>
+        <div class="datos-pago-cliente">
+            <div class="dato-pago-cliente-izq">
+                <p>Numero Cuenta:</p>
+                <p>Pago 1:</p>
+                <p>Pago 2:</p>
+            </div>
+            <div class="dato-pago-cliente-derecha">
+                <p>ES21 XXXXXXXXXXXXXXXX</p>
+                <p class="dato-pago-cliente-derecha-50">0.00 €</p>
+                <p class="dato-pago-cliente-derecha-50">0.00 €</p>
+            </div>
+        </div>
+        <button class="activar-datos-pago-cliente" onclick="activarDatosPagoCliente()">ACTIVAR PAGO</button>
+        <hr class="linea_delimitadora">
+        <h3>VALORACIÓN ECONÓMICA - MODELO PERSONALIZADO</h3>
+        <button onclick="agregarFila()">AGREGAR FILA</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepto</th>
+                    <th>uds.</th>
+                    <th>Precio Ud. (IVA INC)</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tabla-principal">
+                    <td style="text-align: left;" class="tabla-principal-descripcion" contenteditable="true">Tarjetón impreso sobre papel especial de 300g con textura de acuarela
+                        a 2 caras y a todo color. Medidas tarjetón: 21x15 cm (formato A5).
+                        Sobre premium color por determinar.</td>
+                    <td class="tabla-principal-uds" contenteditable="true"></td>
+                    <td class="tabla-principal-precioUd" contenteditable="true"></td>
+                    <td class="tabla-principal-precioTotal"></td>
+                </tr>
+                <tr class="tabla-principal">
+                    <td style="text-align: left;" class="tabla-principal-descripcion" contenteditable="true">Forrado interior de sobre impreso sobre papel especial con textura
+                        de acuareala de 90g. Montaje incluido.</td>
+                    <td class="tabla-principal-uds" contenteditable="true"></td>
+                    <td class="tabla-principal-precioUd" contenteditable="true"></td>
+                    <td class="tabla-principal-precioTotal"></td>
+                </tr>
+    
+                <tr style="text-align: left;" class="tabla-principal">
+                    <td style="text-align: left;" class="tabla-principal-descripcion" contenteditable="true">Tarjeta adicional con el mapa de ubicación e información adicional impresa sobre papel
+                        especial de 300g con textura de acuarela a 1 o 2 caras (2ª cara: info adicional) y todo
+                        color. Medidas: 11x16 cm. Incluye hasta 2 miniaturas en acuarela de lugares de interés.</td>
+                    <td class="tabla-principal-uds" contenteditable="true"></td>
+                    <td class="tabla-principal-precioUd" contenteditable="true"></td>
+                    <td class="tabla-principal-precioTotal"></td>
+                </tr>
+      
+                <tr class="tabla-principal">
+                    <td style="text-align: left;" class="tabla-principal-descripcion" contenteditable="true">Prueba de otra fila fija</td>
+                    <td class="tabla-principal-uds" contenteditable="true"></td>
+                    <td class="tabla-principal-precioUd" contenteditable="true"></td>
+                    <td class="tabla-principal-precioTotal"></td>
+                </tr>
+            </tbody>
+            <tbody>
+                </tr>
+                <tr class="tabla-totales tabla-principal-gastos-de-envio"> <!-- Agregamos la clase 'tabla-principal-gastos-de-envio' -->
+                    <td style="text-align: left;" class="tabla-totales-descripcion" contenteditable="true">Gstos de envío (entrega en Mislata)</td>
+                    <td class="tabla-totales-uds" contenteditable="true">1</td>
+                    <td class="tabla-totales-precioUd" contenteditable="true">0,00 €</td>
+                    <td class="tabla-totales-precioTotal" contenteditable="true" id="gastos-envio">0.00 €</td>
+                </tr>
+                <tr class="tabla-totales">
+                    <td style="text-align: left;" class="tabla-totales-descripcion" contenteditable="true">Subtotal (sin IVA)</td>
+                    <td class="tabla-totales-uds" contenteditable="true"></td>
+                    <td class="tabla-totales-precioUd" contenteditable="true"></td>
+                    <td class="tabla-totales-precioTotal" contenteditable="true" id="subtotal">0.00 €</td>
+                </tr>
+                </tr>
+                <tr class="tabla-totales">
+                    <td style="text-align: left;" class="tabla-totales-descripcion" contenteditable="true">IVA (21%)</td>
+                    <td class="tabla-totales-uds" contenteditable="true"></td>
+                    <td class="tabla-totales-precioUd" contenteditable="true"></td>
+                    <td class="tabla-totales-precioTotal" contenteditable="true" id="iva">0.00 €</td>
+                </tr>
+    
+                <tr class="tabla-totales">
+                    <td style="text-align: left;" class="tabla-totales-descripcion" contenteditable="true">TOTAL (con IVA):</td>
+                    <td class="tabla-totales-uds" contenteditable="true"></td>
+                    <td class="tabla-totales-precioUd" contenteditable="true"></td>
+                    <td class="tabla-totales-precioTotal" contenteditable="true" id="total" >0.00 €</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+        <hr class="linea_delimitadora">
+        <div class="cabecera-condiciones">
+            <div class="columna-izquierda-condiciones">
+                <p>CONDICIONES GENERALES:</p>
+            </div>
+            <div class="columna-derecha-condiciones">
+                <p>Condiciones completas:</p>
+                <p style="text-align: right; font-size: 10px;">https://www.venayamoments.com/condiciones-venta/</p>
+            </div>
+        </div>
+        
+            <div class="condiciones">
+                <ul>
+                    <li>Todos los precios indicados incluyen IVA.</li>
+                    <li>Los impuestos unitarios de cada detalle serán los mismos para una horquilla de +-5 unidades. Para otras cantidades, se revisarán dichos impuestos unitarios.</li>
+                    <li>Ensobrado y empaquetado de las invitaciones incluida.</li>
+                    <li>Para activar el pedido (o en su caso, realizar la reserva del plazo de realización) se deberá dar conformidad al presupuesto realizando la primera parte del pago del pedido (Pago 1).</li>
+                    <li>No imprimimos ningún pedido hasta que los Novios no dan el OK definitivo al diseño que prepararemos.</li>
+                    <li>La comprobación final de los datos y del texto y su exactitud, previa a la impresión, se realiza por parte de los clientes, siendo su responsabilidad su exactitud.</li>
+                    <li>Todas las invitaciones se entregan totalmente montadas y listas para entregar a los invitados.</li>
+                    <li>Venaya Moments se compromete a cumplir con los plazos de la realización acordados con los Clientes.</li>
+                    <li>En el caso de no poder cumplir con los plazos, por motivos ajenos a VM, se informará a los Clientes a la mayor brevedad posible y comentará los posibles soluciones ofreciendo, como una opción, la devolución del primer pago.</li>
+                    <li>Venaya Moments se compromete a realizar los productos acorde con las características descritas en el presupuesto. En el caso de falta de stock de algún elemento del producto final, se informará al cliente y acordará una posible solución o sustitución del material que falta.</li>
+                    <li>El diseño personalizado se enviará a los Clientes en forma de una presentación en formato PDF con el único fin de visualizar el diseño y proponer los eventuales cambios. No se permite su uso para cualquier otro fin.</li>
+                    <li>El diseño personalizado incluye 3 tandas de cambios menores (sujetos al criterio de VM). Cambios de concepto general o de las ilustraciones ya realizadas no están incluidos en el precio. En el caso que querer cambiar el concepto de invitación previamente acordado, se añadirá al presupuesto el concepto por el nuevo diseño.</li>
+                    <li>Existe la posibilidad de pedir invitaciones extra a posteriori (después de aprobar la impresión de las invitaciones), no obstante su precio unitario se verá incrementado y el pedido mínimo es de 10 unidades.</li>
+                    <li>En ningún caso se enviarán los archivos digitales con el diseño, siendo en todo el momento la propiedad intelectual, reservando todos los derechos de autor, de Venaya Moments.</li>
+                    <li>El objeto del "Diseño personalizado" es el trabajo del diseño y la reproducción física del mismo en papel. En ningún caso el apartado del presupuesto de "Diseño personalizado" incluye el archivo digital del mismo ni ninguna otra parte del diseño (incluyendo las tipografías, las ilustraciones, el tipo de maquetación, características de materiales usados, tipos de papel, etc.)</li>
+                    <li>Las ilustraciones y los diseños personalizados pasan a formar parte del catálogo de invitaciones de Venaya Moments. Nos reservamos el derecho de reproducir el diseño y/o la ilustración.</li>
+                    <li>Para los diseños e ilustraciones exclusivas (que no se podrán volver a reproducir - consultar las tarifas).</li>
+                    <li>No incluido: cualquier elemento o partida no incluida expresamente en este presupuesto.</li>
+                    <li>Forma de pago mediante transferencia bancaria.</li>
+                    <ul>
+                        <li>50% del importe total de este presupuesto una vez aprobado.</li>
+                        <li>50% restante una vez terminadas las invitaciones y en el momento de realizar el envío por mensajería privada. Se enviará un correo electrónico una vez el pedido esté listo.</li>
+                    </ul>
+                    <li>El primer pago es imprescindible para realizar la reserva del plazo de la realización. Hasta entonces la fecha quedará libre para otro Cliente que realice el pago.</li>
+                    <li>En caso de cancelación previa al comienzo del proceso del diseño: se devolverá el 50% del primer pago. Si el proceso del diseño ya ha comenzado no se devolverá el primer pago. Si las invitaciones han pasado al proceso de impresión y montaje: es obligatorio abonar la totalidad del pedido.</li>
+                    <li>Nos reservamos el derecho de publicar fotos y videos de las invitaciones y papelería en la web y RR.SS. de Venaya Moments o de terceros, ocultando o alterando previamente los datos personales (números de teléfono, cuenta bancaria, dirección de envío, etc.).</li>
+                    <li>Este presupuesto tiene una validez de 30 días naturales.</li>
+                </ul>
+            </div>
+            <!-- El texto de las condiciones generales será editable por el usuario -->
+            <div class="firma">
+                <p>LLEGANDO A UN ACUERDO</p>
+                <p>VENAYA MOMENTS</p>
+                <p>Anna Jadwiga Przybylak</p>
+                <p>Cliente:</p>
+                <p>Firma:</p>
+                <p>Firma:</p>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
