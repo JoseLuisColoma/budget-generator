@@ -11,17 +11,17 @@ function agregarFila() {
         <td style="text-align: left;" class="tabla-principal-descripcion" contenteditable="true">Nuevo elemento</td>
         <td class="tabla-principal-uds" contenteditable="true">1</td>
         <td class="tabla-principal-precioUd" contenteditable="true">0.00 €</td>
-        <td class="tabla-principal-precioTotal" contenteditable="true">0.00 €</td>
+        <td class="tabla-principal-precioTotal">0.00 €</td>
     `;
     tbody.appendChild(newRow);
+
+    // Llamar a calcularTotales después de agregar una nueva fila
+    calcularTotales();
 }
 
-    // Event listener para calcular precios totales al editar
-    
-    document.addEventListener('input', function (e) {
-    if (e.target.classList.contains('tabla-principal-uds') ||
-        e.target.classList.contains('tabla-principal-precioUd') ||
-        e.target.classList.contains('tabla-gastosEnvio-descripcion')) {
+// Event listener para calcular precios totales al editar
+document.addEventListener('input', function (e) {
+    if (e.target.classList.contains('tabla-principal-uds') || e.target.classList.contains('tabla-principal-precioUd')) {
         calcularPrecioTotal(e.target.parentElement);
     }
 });
@@ -52,10 +52,13 @@ function calcularTotales() {
     // Sumar los gastos de envío al subtotal
     subtotal += gastosEnvio;
 
+    // Actualizar el valor del Subtotal
+    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} €`;
+
+    // Calcular el IVA y el Total
     const iva = subtotal * 0.21;
     const total = subtotal + iva;
 
-    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} €`;
     document.getElementById('iva').textContent = `${iva.toFixed(2)} €`;
     document.getElementById('total').textContent = `${total.toFixed(2)} €`;
 
@@ -64,50 +67,18 @@ function calcularTotales() {
 
     if (cincuentaPorCientoTotal !== '0.00') {
         // Actualizar el valor en las posiciones requeridas
-        document.querySelectorAll('.dato-pago-cliente-derecha-50 p').forEach((p) => {
+        document.querySelectorAll('.dato-pago-cliente-derecha-50').forEach((p) => {
             p.textContent = `${cincuentaPorCientoTotal} €`;
         });
     }
 }
 
-function actualizarGastosDeEnvio(subtotal) {
-    const gastosDeEnvioRow = document.querySelector('.tabla-principal-gastos-de-envio');
-    if (gastosDeEnvioRow) {
-        const gastosDeEnvio = parseFloat(gastosDeEnvioRow.querySelector('.tabla-principal-precioTotal').textContent.replace(' €', '')) || 0;
-        
-        gastosDeEnvioRow.querySelector('.tabla-principal-precioTotal').textContent = `${nuevoPrecioTotal.toFixed(2)} €`;
-    }
-}
-
-function activarDatosPagoCliente() {
-    const datosPagoCliente = document.querySelector('.datos-pago-cliente');
-    const activarButton = document.querySelector('.activar-datos-pago-cliente');
-
-    if (datosPagoCliente.style.display === 'none' || datosPagoCliente.style.display === '') {
-        datosPagoCliente.style.display = 'flex';
-        activarButton.style.display = 'none'; // Ocultar el botón al activar
-
-        // Mostrar "PAGO 1" y "PAGO 2"
-        document.querySelectorAll('.dato-pago-cliente-derecha-50 p').forEach((p) => {
-            p.style.display = 'block';
-        });
-    }
-}
-
-// Función para obtener el 50% del total
 function obtener50PorCientoPrecioTotal() {
     const totalElement = document.getElementById('total');
     const totalText = totalElement.textContent;
     const totalAmount = parseFloat(totalText.replace(' €', ''));
-    const resultado = '0.00';
-
-    if (!isNaN(totalAmount)) {
-        const cincuentaPorCiento = totalAmount * 0.5;
-        let resultado = cincuentaPorCiento.toFixed(2);
-        return resultado;
-    }
-
-    return resultado;
+    const cincuentaPorCiento = totalAmount * 0.5;
+    return cincuentaPorCiento.toFixed(2);
 }
 
 // Llamar a calcularTotales al cargar la página
