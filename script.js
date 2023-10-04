@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtener la fecha actual y establecerla en el elemento con id "fecha-actual"
     const fechaActualElement = document.getElementById('fecha-actual');
     const fechaActual = new Date().toLocaleDateString('es-ES');
     fechaActualElement.textContent = fechaActual;
@@ -17,15 +16,13 @@ function agregarFila() {
     tbody.appendChild(newRow);
 }
 
-// Event listener para calcular precios totales al editar
-document.addEventListener('input', function (e) {
-    if (e.target.classList.contains('tabla-principal-uds') || e.target.classList.contains('tabla-principal-precioUd')) {
+    // Event listener para calcular precios totales al editar
+    
+    document.addEventListener('input', function (e) {
+    if (e.target.classList.contains('tabla-principal-uds') ||
+        e.target.classList.contains('tabla-principal-precioUd') ||
+        e.target.classList.contains('tabla-gastosEnvio-descripcion')) {
         calcularPrecioTotal(e.target.parentElement);
-    }
-
-    // Agregar un event listener para los cambios en el precio de gastos de envío
-    if (e.target.classList.contains('tabla-principal-precioTotal')) {
-        calcularTotales();
     }
 });
 
